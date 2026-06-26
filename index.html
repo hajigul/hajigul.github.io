@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haji Gul — Academic Homepage</title>
+<meta name="description" content="Haji Gul — PhD researcher in Artificial Intelligence. Knowledge Graphs, NLP, Complex Networks, Link Prediction.">
+<style>
+  :root{
+    --bg:#0f1419;
+    --panel:#161b22;
+    --panel2:#1c2330;
+    --ink:#e6edf3;
+    --muted:#9aa7b4;
+    --accent:#4cc2ff;
+    --accent2:#7ee787;
+    --line:#2a3340;
+    --chip:#22303f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    font-size:16px;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* Layout */
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px}
+
+  /* Top nav */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(15,20,25,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  nav .brand{font-weight:700;font-size:1.05rem;letter-spacing:.3px}
+  nav .links{display:flex;gap:18px;flex-wrap:wrap}
+  nav .links a{color:var(--muted);font-size:.92rem;font-weight:500}
+  nav .links a:hover{color:var(--accent);text-decoration:none}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);
+    border-radius:8px;padding:6px 10px;font-size:1.1rem;cursor:pointer}
+
+  /* Hero */
+  header.hero{
+    background:linear-gradient(160deg,#13203a 0%,#0f1419 60%);
+    border-bottom:1px solid var(--line);
+    padding:54px 0 44px;
+  }
+  .hero-grid{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
+  .avatar{
+    width:150px;height:150px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),#2b6cb0);
+    display:flex;align-items:center;justify-content:center;
+    font-size:3.4rem;font-weight:700;color:#06121f;flex-shrink:0;
+    border:4px solid #233047;box-shadow:0 8px 30px rgba(0,0,0,.4);
+  }
+  .hero h1{font-size:2.3rem;line-height:1.2;margin-bottom:6px}
+  .hero .role{color:var(--accent2);font-weight:600;font-size:1.1rem;margin-bottom:12px}
+  .hero p.lead{color:var(--muted);max-width:560px;margin-bottom:18px}
+  .social{display:flex;gap:12px;flex-wrap:wrap}
+  .social a{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--chip);border:1px solid var(--line);
+    padding:7px 14px;border-radius:999px;font-size:.88rem;
+    color:var(--ink);font-weight:500;
+  }
+  .social a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+  /* Sections */
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
+  section h2{
+    font-size:1.5rem;margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  section h2::before{
+    content:"";width:5px;height:24px;background:var(--accent);border-radius:3px;display:inline-block;
+  }
+  .lead-text{color:var(--muted);max-width:760px}
+
+  /* Keyword chips */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .chips span{
+    background:var(--chip);border:1px solid var(--line);
+    padding:5px 13px;border-radius:999px;font-size:.83rem;color:var(--ink);
+  }
+
+  /* Cards / lists */
+  .card{
+    background:var(--panel);border:1px solid var(--line);
+    border-radius:12px;padding:18px 20px;margin-bottom:14px;
+  }
+  .card:hover{border-color:#37445a}
+  .pub-title{font-weight:600;color:var(--ink);margin-bottom:5px}
+  .pub-authors{color:var(--muted);font-size:.9rem;margin-bottom:5px}
+  .pub-authors .me{color:var(--accent2);font-weight:600}
+  .pub-venue{font-size:.88rem;color:var(--accent)}
+  .badge{
+    display:inline-block;font-size:.72rem;font-weight:700;
+    padding:2px 9px;border-radius:6px;margin-left:8px;vertical-align:middle;
+    background:#1f3a24;color:var(--accent2);border:1px solid #2c5234;
+  }
+  .badge.review{background:#3a2f1f;color:#ffd479;border-color:#5a4a2c}
+  .badge.year{background:#22303f;color:var(--muted);border-color:var(--line)}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:22px}
+  .tl-item::before{
+    content:"";position:absolute;left:-26px;top:6px;width:12px;height:12px;
+    border-radius:50%;background:var(--accent);border:3px solid var(--bg);
+  }
+  .tl-role{font-weight:600}
+  .tl-org{color:var(--accent);font-size:.93rem}
+  .tl-date{color:var(--muted);font-size:.84rem;margin-bottom:6px}
+  .tl-item ul{margin:6px 0 0 18px;color:var(--muted);font-size:.9rem}
+  .tl-item li{margin-bottom:3px}
+
+  /* Two-column grid */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .mini h3{font-size:1.05rem;margin-bottom:4px}
+  .mini .sub{color:var(--accent);font-size:.88rem}
+  .mini .date{color:var(--muted);font-size:.82rem}
+
+  /* Highlight banner */
+  .highlight{
+    background:linear-gradient(120deg,#13261c,#162033);
+    border:1px solid #2c5234;border-radius:12px;padding:20px 22px;
+    display:flex;gap:16px;align-items:flex-start;
+  }
+  .highlight .ic{font-size:1.8rem}
+  .highlight h3{color:var(--accent2);margin-bottom:4px;font-size:1.1rem}
+  .highlight p{color:var(--muted);font-size:.93rem}
+
+  /* simple two-col lists */
+  .collist{columns:2;column-gap:30px}
+  .collist li{margin:0 0 7px 18px;color:var(--muted);font-size:.92rem}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .contact-card .lbl{color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+  .ref{font-size:.9rem;color:var(--muted);margin-bottom:12px}
+  .ref b{color:var(--ink)}
+
+  footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.86rem}
+
+  /* Responsive */
+  @media(max-width:760px){
+    .hero h1{font-size:1.8rem}
+    .grid2,.contact-grid{grid-template-columns:1fr}
+    .collist{columns:1}
+    nav .links{display:none;position:absolute;top:58px;left:0;right:0;
+      background:var(--panel);flex-direction:column;padding:14px 22px;border-bottom:1px solid var(--line)}
+    nav .links.open{display:flex}
+    .menu-btn{display:block}
+    .avatar{width:110px;height:110px;font-size:2.6rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap">
+    <div class="brand">Haji Gul</div>
+    <button class="menu-btn" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <div class="links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#service">Service</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="avatar">HG</div>
+    <div>
+      <h1>Haji Gul</h1>
+      <div class="role">PhD Researcher in Artificial Intelligence</div>
+      <p class="lead">Universiti Brunei Darussalam. I work on knowledge graphs, natural language processing,
+        and complex network analysis — including knowledge graph completion, link prediction, and graph clustering.</p>
+      <div class="social">
+        <a href="https://scholar.google.com/citations?user=WqmzWogAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
+        <a href="https://github.com/hajigul" target="_blank">💻 GitHub</a>
+        <a href="https://sites.google.com/view/hajigul/research-interest" target="_blank">🌐 Homepage</a>
+        <a href="https://linkedin.com/in/haji-gul" target="_blank">in LinkedIn</a>
+        <a href="mailto:23h1710@ubd.edu.bn">✉ Email</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <h2>Research Interest</h2>
+    <p class="lead-text">
+      My research interests encompass knowledge graphs (KG), complex networks
+      (protein–protein interaction networks, Yeast, <i>C. elegans</i> neurons, <i>E. coli</i>) and
+      social network analysis (Karate, Dolphins). This includes knowledge graph completion (KGC),
+      link prediction (LP), graph clustering, natural language processing (NLP), and recommendation
+      systems, with a focus on their applications in pattern recognition and complex network analysis.
+      My PhD focuses on knowledge graphs (completion, evaluation, complexity, link prediction),
+      NLP, Transformers, and LLMs.
+    </p>
+    <div class="chips">
+      <span>NLP</span><span>Knowledge Graph Completion</span><span>Link Prediction</span>
+      <span>Knowledge Graph Evaluation</span><span>Graph Clustering</span><span>Complex Networks</span>
+      <span>Community Detection</span><span>Machine Learning</span><span>Deep Learning</span>
+      <span>Pre-trained Language Models</span><span>Transformers</span><span>LLMs</span><span>Recommendations</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHT ============ -->
+<section id="award">
+  <div class="wrap">
+    <div class="highlight">
+      <div class="ic">🏅</div>
+      <div>
+        <h3>DAAD AInet Fellowship (2025)</h3>
+        <p>Awarded the DAAD AInet Fellowship in Natural Language Processing (May 2025).
+           Currently collaborating with Leuphana University, Germany.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications</h2>
+
+    <h3 style="margin:6px 0 16px;color:var(--muted);font-size:1.05rem;font-weight:600">Conference &amp; Workshop Papers</h3>
+
+    <div class="card">
+      <div class="pub-title">MuCo-KGC: Multi-Context-Aware Knowledge Graph Completion</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Ajaz Ahmad Bhat, Abdul Ghani Haji Naim</div>
+      <div class="pub-venue">29th Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)
+        <span class="badge year">2025</span>
+        <a href="https://dl.acm.org/doi/10.1007/978-981-96-8298-0_1" target="_blank"> · link</a></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Evaluating Knowledge Graph Complexity via Semantic, Spectral, and Structural Metrics for Link Prediction</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">IEEE BigData 2025 <span class="badge">Accepted</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">KG-EDAS: A Meta-Metric Framework for Evaluating Knowledge Graph Completion Models</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">IEEE BigData 2025 <span class="badge">Accepted</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">MuCoS: Efficient Drug-Target Prediction through Multi-Context-Aware Sampling</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abdul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">24th BioNLP Workshop @ ACL SIGBIOMED 2025 <span class="badge">Accepted</span>
+        <a href="https://aclanthology.org/people/haji-gul/" target="_blank"> · link</a></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Evaluating Cumulative Spectral Gradient as a Complexity Measure</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">4th Muslims in ML (MusIML) Workshop @ ICML 2025</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Domain-Aware Evaluation of Knowledge Graph Completion Models Using KG-EDAS</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">GCLR Workshop @ AAAI <span class="badge">Accepted</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">A Contextualized BERT Model for Knowledge Graph Completion</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Abul Ghani Haji Naim, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">Muslims in ML (MusIML) Workshop @ NeurIPS 2024</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Real-World Protein Particle Network Reconstruction Based on Advanced Hybrid Features</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Feras Al-Obeidat, Fernando Moreira, Muhammad Tahir, Adnan Amin</div>
+      <div class="pub-venue">Proc. Int. Conf. on Information Technology and Applications, LNNS vol. 350, Springer Singapore</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">A Systematic Analysis of Community Detection in Complex Networks</div>
+      <div class="pub-authors">Haji, G., Al-Obeidat, F., Amin, A., Tahir, M., Moreira, F.</div>
+      <div class="pub-venue">Procedia Computer Science, 201, 343–350 <span class="badge year">2022</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Link Prediction Using Double Degree Equation with Mutual and Popular Nodes</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, A. Amin, F. Nasir, S.J. Ahmad, M. Wasim</div>
+      <div class="pub-venue">WorldCIST 2021, Advances in Intelligent Systems and Computing, vol. 1368, Springer Cham</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Features Extraction and Structure Similarity Measurements of Complex Networks</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Feras Al-Obeidat, Munir Majdalawieh, Adnan Amin, Fernando Moreira</div>
+      <div class="pub-venue">11th World Conference on Information Systems and Technologies</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Comparative Analysis of Machine Learning Algorithms for Author Age and Gender Identification</div>
+      <div class="pub-authors">Zarah Zainab, Feras Al-Obeidat, Fernando Moreira, <span class="me">Haji Gul</span>, Adnan Amin</div>
+      <div class="pub-venue">16th International Conference on Information Technology and Applications (ICITA) 2022</div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Forecasting Networks Links with Laplace Characteristic and Geographical Information in Complex Networks</div>
+      <div class="pub-authors">Wasim, M., Al-Obeidat, F., Moreira, F., <span class="me">Gul, H.</span>, Amin, A.</div>
+      <div class="pub-venue">Procedia Computer Science, 224, 357–364 <span class="badge year">2023</span></div>
+    </div>
+
+    <h3 style="margin:30px 0 16px;color:var(--muted);font-size:1.05rem;font-weight:600">Journal Papers</h3>
+
+    <div class="card">
+      <div class="pub-title">When Metrics Disagree: A Meta-Analysis of Knowledge-Graph-Completion Model Benchmarking</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, Ajaz Ahmad Bhat</div>
+      <div class="pub-venue">arXiv:2606.10287, 2026 <span class="badge review">Under Review</span>
+        <a href="https://arxiv.org/pdf/2606.10287" target="_blank"> · link</a></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">DualRep: Knowledge Graph Completion by Utilizing Dual Representation of Relational Paths and Tail Node Density Insights</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, F. Al-Obeidat, A. Amin, M. Wasim, F. Moreira</div>
+      <div class="pub-venue">IEEE Access <span class="badge year">2024</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Advancing Fake News Detection with Graph Neural Network and Deep Learning</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, F. Al-Obeidat, M. Wasim, A. Amin, F. Moreira</div>
+      <div class="pub-venue">Journal of Physics: Complexity <span class="badge year">2024</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Analyzing Complex Networks: Extracting Key Characteristics and Measuring Structural Similarities</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span>, Feras Al-Obeidat, Adnan Amin, Fernando Moreira</div>
+      <div class="pub-venue">Wiley: Journal of Expert Systems <span class="badge year">2023</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Efficient Link Prediction Model for Real-World Complex Networks Using Matrix-Forest Metric with Local Similarity Features</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, F. Al-Obeidat, A. Amin, M. Tahir, K. Huang</div>
+      <div class="pub-venue">Journal of Complex Networks, 10(5), cnac039 <span class="badge year">2022</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Hill Climbing-Based Efficient Model for Link Prediction in Undirected Graphs</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, F. Al-Obeidat, A. Amin, F. Moreira, K. Huang</div>
+      <div class="pub-venue">Mathematics, 10(22), 4265 <span class="badge year">2022</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">A Systematic Analysis of Link Prediction in Complex Networks</div>
+      <div class="pub-authors"><span class="me">H. Gul</span>, A. Amin, A. Adnan, K. Huang</div>
+      <div class="pub-venue">IEEE Access, 9, 20531–20541 <span class="badge year">2021</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Path-Based Extensions of Local Link Prediction Methods for Complex Networks</div>
+      <div class="pub-authors">F. Aziz, <span class="me">H. Gul</span>, I. Uddin, G.V. Gkoutos</div>
+      <div class="pub-venue">Scientific Reports, 10(1), 19848 <span class="badge year">2020</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Link Prediction Using Node Information on Local Paths</div>
+      <div class="pub-authors">F. Aziz, <span class="me">H. Gul</span>, I. Muhammad, I. Uddin</div>
+      <div class="pub-venue">Physica A: Statistical Mechanics and its Applications, 557, 124980 <span class="badge year">2020</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Comparative Analysis of Link Prediction in Complex Networks</div>
+      <div class="pub-authors">F. Nasir, <span class="me">H. Gul</span>, M. Bakhsh, A. Salam</div>
+      <div class="pub-venue">International Journal of Technology Diffusion (IJTD), 12(3), 44–60 <span class="badge year">2021</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Artificial Intelligence for Secure and Sustainable Industrial Control Systems — A Survey of Challenges and Solutions</div>
+      <div class="pub-authors">M.M. Aslam, A. Tufail, <span class="me">Haji Gul</span>, M.N. Irshad, A. Namoun</div>
+      <div class="pub-venue">Artificial Intelligence Review <span class="badge year">2025</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Enhancing Link Prediction Efficiency with Shortest Path and Structural Attributes</div>
+      <div class="pub-authors">M. Wasim, F. Al-Obeidat, A. Amin, <span class="me">H. Gul</span>, F. Moreira</div>
+      <div class="pub-venue">Intelligent Data Analysis (Pre-press) <span class="badge year">2023</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Link Prediction in Human Complex Network Based on Random Walk with Global Topological Features</div>
+      <div class="pub-authors">S.S. Hussain, M. Arif, O.B. Inayat, <span class="me">Haji Gul</span></div>
+      <div class="pub-venue">Data Analysis and Forecasting, 2, 30–42 <span class="badge year">2023</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Intelligent Transportation Systems: A Critical Review of Integration of Cyber-Physical Systems (CPS) and Industry 4.0</div>
+      <div class="pub-authors">M.M. Aslam, W. Shafik, A.F. Hidayatullah, K. Kalinaki, <span class="me">Haji Gul</span>, R.Y. Zakari, A. Tufail</div>
+      <div class="pub-venue">Digital Communications and Networks <span class="badge year">2025</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">A Systematic Literature Review on Transparency and Interpretability of AI Models in Healthcare</div>
+      <div class="pub-authors"><span class="me">Haji Gul</span> et al.</div>
+      <div class="pub-venue">Health and Technology <span class="badge year">2025</span></div>
+    </div>
+
+    <h3 style="margin:30px 0 16px;color:var(--muted);font-size:1.05rem;font-weight:600">Book Chapters</h3>
+
+    <div class="card">
+      <div class="pub-title">Big Data Analytics in Bioinformatics and Healthcare</div>
+      <div class="pub-authors">Z.K. Lawal, R.Y. Zakari, N.N. Thilakarathne, <span class="me">H. Gul</span>, N. Abdulrazak, H. Yassin</div>
+      <div class="pub-venue">Cyber-Physical Systems Security: A Multi-disciplinary Approach, 71–95 <span class="badge year">2025</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Leveraging Natural Language Processing for Enhanced Text Analysis in Business Intelligence</div>
+      <div class="pub-authors">A.F. Hidayatullah, K. Kalinaki, <span class="me">H. Gul</span>, R.Z. Yusuf, W. Shafik</div>
+      <div class="pub-venue">Intersection of AI and Business Intelligence in Data-Driven Decision-Making <span class="badge year">2024</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Governance and Policy Frameworks in African Healthcare</div>
+      <div class="pub-authors">W. Shafik, <span class="me">Haji Gul</span></div>
+      <div class="pub-venue">Sustainable Healthcare Systems in Africa <span class="badge">Accepted</span></div>
+    </div>
+
+    <div class="card">
+      <div class="pub-title">Achieving Sustainable Healthcare Systems in Africa</div>
+      <div class="pub-authors">W. Shafik, <span class="me">Haji Gul</span></div>
+      <div class="pub-venue">Sustainable Healthcare Systems in Africa <span class="badge">Accepted</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <h2>Employment History</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-role">Teaching Assistant — Data Structures &amp; Algorithms</div>
+        <div class="tl-org">School of Digital Science, Universiti Brunei Darussalam</div>
+        <div class="tl-date">2023 – Present</div>
+        <ul>
+          <li>Delivered tutorials, coding exercises, assignments, and practical sessions.</li>
+          <li>Guided students through core concepts of algorithms and data structures.</li>
+          <li>Supported course assessments and student learning activities.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-role">Robotics Trainer &amp; Project Supervisor</div>
+        <div class="tl-org">Seriya Energy Lab, Brunei</div>
+        <div class="tl-date">3 months</div>
+        <ul>
+          <li>Conducted hands-on training in robotics fundamentals.</li>
+          <li>Supervised 3 student groups through introductory robotics projects.</li>
+          <li>Mentored students in problem-solving, teamwork, and technical documentation.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-role">Senior Lecturer</div>
+        <div class="tl-org">City University of Science and Information Technology, Pakistan</div>
+        <div class="tl-date">Sep 2019 – Aug 2023</div>
+        <ul>
+          <li>Taught BS-level courses; supervised Final Year Projects.</li>
+          <li>Member of the FYP Committee.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-role">Lecturer</div>
+        <div class="tl-org">Peshawar Science College, Pakistan</div>
+        <div class="tl-date">2017 – 2018</div>
+        <ul><li>Taught courses to undergraduate students.</li></ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-role">Lecturer</div>
+        <div class="tl-org">Frontier Degree College, Pakistan</div>
+        <div class="tl-date">2022 – Present</div>
+        <ul><li>Taught courses to undergraduate students.</li></ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="grid2">
+      <div class="card mini">
+        <h3>Ph.D., Artificial Intelligence</h3>
+        <div class="sub">Universiti Brunei Darussalam (UBD)</div>
+        <div class="date">2023 – 2026</div>
+      </div>
+      <div class="card mini">
+        <h3>MS, Computer Science</h3>
+        <div class="sub">Institute of Management Sciences, Peshawar</div>
+        <div class="date">2017 – 2019</div>
+      </div>
+      <div class="card mini">
+        <h3>MSc, Computer Science</h3>
+        <div class="sub">Institute of Management Sciences, Peshawar</div>
+        <div class="date">2014 – 2016</div>
+      </div>
+      <div class="card mini">
+        <h3>BSc</h3>
+        <div class="sub">Govt. Superior Science College (Peshawar University)</div>
+        <div class="date">2011 – 2013</div>
+      </div>
+      <div class="card mini">
+        <h3>Master of Education (M.Ed.)</h3>
+        <div class="sub">Virtual University, Pakistan</div>
+        <div class="date">2022</div>
+      </div>
+      <div class="card mini">
+        <h3>Bachelor of Education (B.Ed.)</h3>
+        <div class="sub">Allama Iqbal Open University, Pakistan</div>
+        <div class="date">2019</div>
+      </div>
+    </div>
+
+    <h3 style="margin:26px 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">Selected Certifications</h3>
+    <ul class="collist">
+      <li>Robot Localization with Python and Particle Filters — Coursera (2025)</li>
+      <li>Fundamentals of AI Agents Using RAG and LangChain — Coursera (2025)</li>
+      <li>Introduction to Generative AI — Coursera (2025)</li>
+      <li>Neural Networks and Deep Learning — DeepLearning.AI (2023)</li>
+      <li>Sequence Models / NLP — DeepLearning.AI (2023)</li>
+      <li>Structuring Machine Learning Projects — DeepLearning.AI (2023)</li>
+      <li>Supervised ML: Regression — IBM (2023)</li>
+      <li>Supervised ML: Classification — IBM (2023)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ SERVICE ============ -->
+<section id="service">
+  <div class="wrap">
+    <h2>Academic Service &amp; Teaching</h2>
+
+    <h3 style="margin:0 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">Reviewer / Committee Member</h3>
+    <div class="chips">
+      <span>ICML 2026</span><span>NeurIPS 2026</span><span>AAAI</span><span>ICDM</span>
+      <span>MusIML @ ICML</span><span>IEEE Trans. Consumer Electronics</span><span>WorldCIST</span>
+      <span>ECIC</span><span>Scientific Reports</span><span>npj Complexity</span>
+      <span>Applied Network Science</span><span>Cluster Computing</span><span>Social Network Analysis &amp; Mining</span>
+    </div>
+
+    <h3 style="margin:26px 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">Project Supervision</h3>
+    <div class="card">
+      <div class="pub-title">MS Co-Supervision</div>
+      <div class="pub-authors">Link Prediction Based on Topological Features with Shortest Path</div>
+    </div>
+    <div class="card">
+      <div class="pub-title">BS Supervision</div>
+      <div class="pub-authors">Complex Network Structure Analysis & Similarity Measurement · Similarity-Based Algorithms for Protein–Protein Interaction Prediction · Digital Parking System · CUSIT Sport Monitoring & Prediction System · Edge Mining in Transportation and Animal Networks</div>
+    </div>
+
+    <h3 style="margin:26px 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">Subjects Taught</h3>
+    <p class="lead-text">Advanced Computation Theory, AI, Analysis of Algorithms, Advanced Programming,
+      Compiler Construction, Data Mining, Data Structures, Data Communication & Computer Networks,
+      Databases, Fundamentals of Programming, Introduction to Computers, Machine Learning,
+      Operating Systems, Social Network Analysis, Theory of Automata, Visual Programming.</p>
+
+    <h3 style="margin:26px 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">Skills</h3>
+    <div class="chips">
+      <span>Python</span><span>MATLAB</span><span>BERT / RoBERTa / DistilBERT</span><span>GPT</span>
+      <span>Transformers</span><span>Deep Learning</span><span>LaTeX</span><span>SPSS</span>
+      <span>English</span><span>Urdu</span><span>Pashto</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="lbl">Email</div>
+        <div><a href="mailto:23h1710@ubd.edu.bn">23h1710@ubd.edu.bn</a></div>
+        <div><a href="mailto:hajigul1993@gmail.com">hajigul1993@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="lbl">Phone / WhatsApp</div>
+        <div>+92-307-8297663</div>
+      </div>
+    </div>
+
+    <h3 style="margin:26px 0 14px;color:var(--muted);font-size:1.05rem;font-weight:600">References</h3>
+    <div class="ref"><b>Dr. Ajaz Ahmad Bhat</b> — Assistant Professor, School of Digital Science, UBD ·
+      <a href="mailto:ajaz.bhat@ubd.edu.bn">ajaz.bhat@ubd.edu.bn</a></div>
+    <div class="ref"><b>Dr. Abdul Ghani Naim</b> — Assistant Professor, School of Digital Science, UBD ·
+      <a href="mailto:ghani.naim@ubd.edu.bn">ghani.naim@ubd.edu.bn</a></div>
+    <div class="ref"><b>Dr. Adnan Amin</b> — Assistant Professor, Institute of Management Sciences, Peshawar ·
+      <a href="mailto:adnan.amin@imsciences.edu.pk">adnan.amin@imsciences.edu.pk</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Haji Gul · Built with HTML &amp; CSS · Hosted on GitHub Pages</div>
+</footer>
+
+</body>
+</html>
