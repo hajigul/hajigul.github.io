@@ -136,10 +136,7 @@ nav .links a.active{color:var(--hue);background:var(--hue-soft);font-weight:600}
 section{padding:52px 0;border-bottom:1px solid var(--line)}
 section:last-of-type{border-bottom:none}
 .section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
-.section-idx{
-  font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:var(--hue);
-  flex-shrink:0;padding-top:4px;min-width:30px;
-}
+.section-idx{display:none;}
 .section-head h2{
   font-family:'Newsreader',serif;font-weight:500;font-size:1.85rem;letter-spacing:-.01em;
 }
