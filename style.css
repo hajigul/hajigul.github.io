@@ -273,6 +273,28 @@ figure.fig figcaption{font-size:.82rem;color:var(--ink-faint);padding:8px 12px;f
 
 @media(max-width:620px){.paper-figs.two{grid-template-columns:1fr}}
 
+/* ---------------- CITATION ---------------- */
+.cite-wrap{margin-top:18px}
+.cite-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:var(--hue-soft);border:1px solid var(--line);border-bottom:none;
+  border-radius:10px 10px 0 0;padding:8px 14px;
+}
+.cite-bar .lbl{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--hue)}
+.cite-copy{
+  border:1px solid var(--line-strong);background:var(--paper2);color:var(--ink-soft);
+  font-size:.78rem;font-weight:600;padding:4px 12px;border-radius:7px;cursor:pointer;
+  transition:all .18s;
+}
+.cite-copy:hover{background:var(--hue);color:#fff;border-color:var(--hue)}
+.cite-copy.copied{background:#2f6b54;color:#fff;border-color:#2f6b54}
+pre.cite{
+  margin:0;background:var(--paper2);border:1px solid var(--line);border-radius:0 0 10px 10px;
+  padding:14px 16px;overflow-x:auto;font-size:.8rem;line-height:1.5;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink-soft);
+  white-space:pre;
+}
+
 /* ---------------- FOOTER ---------------- */
 footer{padding:36px 0;text-align:center;color:var(--ink-faint);font-size:.88rem;border-top:1px solid var(--line)}
 footer a{font-weight:500}
