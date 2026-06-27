@@ -259,7 +259,8 @@ figure.fig{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hid
 figure.fig img{width:100%;height:auto;display:block}
 figure.fig figcaption{font-size:.82rem;color:var(--ink-faint);padding:8px 12px;font-style:italic;font-family:'Newsreader',serif}
 .fig-placeholder{
-  aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+  display:none;
+  aspect-ratio:16/9;align-items:center;justify-content:center;
   color:var(--ink-faint);font-size:.85rem;text-align:center;padding:20px;
   background:repeating-linear-gradient(45deg,var(--paper),var(--paper) 10px,#f3f0ea 10px,#f3f0ea 20px);
 }
