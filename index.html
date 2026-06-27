@@ -100,13 +100,32 @@
       </summary>
       <div class="paper-body">
         <div class="abstract-label">Abstract</div>
-        <p class="abstract">[ Paste the abstract for MuCo-KGC here. Replace this whole sentence with your real abstract text. ]</p>
+        <p class="abstract">Knowledge Graph Completion (KGC) seeks to predict missing entities (e.g., heads or tails)
+          or relationships in knowledge graphs (KGs), which often contain incomplete data. Traditional
+          embedding-based methods, such as TransE and ComplEx, have improved tail entity prediction but
+          struggle to generalize to unseen entities during testing. Textual-based models mitigate this issue
+          by leveraging additional semantic context; however, their reliance on negative triplet sampling
+          introduces high computational overhead, semantic inconsistencies, and data imbalance. Recent
+          approaches, like KG-BERT, show promise but depend heavily on entity descriptions, which are often
+          unavailable in KGs. Critically, existing methods overlook valuable structural information in the KG
+          related to the entities and relationships. To address these challenges, we propose Multi-Context-Aware
+          Knowledge Graph Completion (MuCo-KGC), a novel model that utilizes contextual information from linked
+          entities and relations within the graph to predict tail entities. MuCo-KGC eliminates the need for
+          entity descriptions and negative triplet sampling, significantly reducing computational complexity
+          while enhancing performance. Our experiments on standard datasets, including FB15k-237, WN18RR,
+          CoDEx-S, and CoDEx-M, demonstrate that MuCo-KGC outperforms state-of-the-art methods on three datasets.
+          Notably, MuCo-KGC improves MRR on WN18RR, CoDEx-S, and CoDEx-M datasets by 1.63%, 3.77%, and 20.15%
+          respectively, demonstrating its effectiveness for KGC tasks.</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/muco-kgc-1.png" alt="MuCo-KGC figure 1"
+            <img src="Figures/CAB-updated.png" alt="MuCo-KGC model pipeline"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/muco-kgc-1.png</div>
-            <figcaption>Figure 1 — add your caption here.</figcaption>
+            <div class="fig-placeholder">Add image: Figures/CAB-updated.png</div>
+            <figcaption>Figure 1 — Overview of the MuCo-KGC model pipeline for predicting the tail entity,
+              given a head entity h and relationship r. The left box shows the head context H<sub>c</sub>
+              (union of relations R(h) and neighbouring entities E(h)); the right box shows the relationship
+              context R<sub>c</sub>. These contextual features, alongside h and r, are fed into a BERT model
+              with a linear classifier and softmax to generate tail-entity probabilities.</figcaption>
           </figure>
         </div>
         <div class="paper-links">
@@ -127,17 +146,52 @@
       </summary>
       <div class="paper-body">
         <div class="abstract-label">Abstract</div>
-        <p class="abstract">[ Paste the abstract for MuCoS here. ]</p>
+        <p class="abstract">Accurate prediction of drug-target interactions is critical for accelerating drug discovery.
+          In this work, we frame drug-target prediction as a link prediction task on heterogeneous biomedical
+          knowledge graphs (KGs) that integrate drugs, proteins, diseases, pathways, and other relevant entities.
+          Conventional KG embedding methods such as TransE and ComplEx are hindered by their reliance on
+          computationally intensive negative sampling and their limited generalization to unseen drug-target pairs.
+          To address these challenges, we propose Multi-Context-Aware Sampling (MuCoS), a novel framework that
+          prioritizes high-density neighbours to capture salient structural patterns and integrates these with
+          contextual embeddings derived from BERT. By unifying structural and textual modalities and selectively
+          sampling highly informative patterns, MuCoS eliminates the need for negative sampling, significantly
+          reduces computational overhead, and improves generalization to unseen drug-target pairs and targets.
+          Extensive experiments on the KEGG50k and PharmKG-8k datasets demonstrate that MuCoS outperforms
+          competitive baselines, achieving up to 13% improvement in MRR for general relation prediction on
+          KEGG50k, up to 22% improvement in MRR on PharmKG-8k, and up to 6% improvement in dedicated drug-target
+          relation prediction on KEGG50k.</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/mucos-1.png" alt="MuCoS figure 1"
+            <img src="Figures/model1.png" alt="MuCoS overall pipeline"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/mucos-1.png</div>
-            <figcaption>Figure 1 — add your caption here.</figcaption>
+            <div class="fig-placeholder">Add image: Figures/model1.png</div>
+            <figcaption>Figure 1 — Overview of the MuCoS model pipeline for predicting general and drug-target
+              relations and tail entities. The left boxes show the input sequence to BERT: (h) head, (Hc) head
+              context, (t) tail, (Tc) tail context, (r) relation, and (Rc) relation context. This integrated
+              context passes through BERT with a linear classifier and softmax to produce probabilities for
+              relations and tails.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="Figures/hc.png" alt="MuCoS head context construction"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="fig-placeholder">Add image: Figures/hc.png</div>
+            <figcaption>Figure 2 — Head context (H<sub>c</sub>) construction with sampling. The one-hop head
+              context consists of the relation set R(h) and neighbouring tail entities E(h). Only the top-n
+              tail entities are selected and concatenated based on their density ρ(e) to form the optimized
+              head context.</figcaption>
+          </figure>
+          <figure class="fig">
+            <img src="Figures/Rc_n.png" alt="MuCoS relation context construction"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="fig-placeholder">Add image: Figures/Rc_n.png</div>
+            <figcaption>Figure 3 — Relation context (R<sub>c</sub>) construction with sampling. The top-k
+              entities are selected by density ρ, retaining the most informative head-tail pairs, which are
+              then aggregated by concatenation to form the optimized relation context.</figcaption>
           </figure>
         </div>
         <div class="paper-links">
-          <a href="https://aclanthology.org/people/haji-gul/" target="_blank">Paper ↗</a>
+          <a href="https://aclanthology.org/2025.bionlp-1.27/" target="_blank">Paper ↗</a>
+          <a href="https://github.com/hajigul/MuCoS_KGC-Efficient-Drug-Target-Discovery-via-Multi-Context-Aware-Sampling-in-Knowledge-Graphs/tree/main" target="_blank">Code ↗</a>
         </div>
       </div>
     </details>
@@ -157,9 +211,9 @@
         <p class="abstract">[ Paste the abstract for When Metrics Disagree here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/when-metrics-1.png" alt="When Metrics Disagree figure 1"
+            <img src="Figures/when-metrics-1.png" alt="When Metrics Disagree figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/when-metrics-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/when-metrics-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
@@ -184,9 +238,9 @@
         <p class="abstract">[ Paste the abstract for KG-EDAS here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/kg-edas-1.png" alt="KG-EDAS figure 1"
+            <img src="Figures/kg-edas-1.png" alt="KG-EDAS figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/kg-edas-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/kg-edas-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
@@ -208,9 +262,9 @@
         <p class="abstract">[ Paste the abstract for this paper here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/kg-complexity-1.png" alt="KG complexity figure 1"
+            <img src="Figures/kg-complexity-1.png" alt="KG complexity figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/kg-complexity-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/kg-complexity-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
@@ -232,9 +286,9 @@
         <p class="abstract">[ Paste the abstract for this paper here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/csg-1.png" alt="Cumulative spectral gradient figure 1"
+            <img src="Figures/csg-1.png" alt="Cumulative spectral gradient figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/csg-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/csg-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
@@ -256,9 +310,9 @@
         <p class="abstract">[ Paste the abstract for this paper here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/domain-edas-1.png" alt="Domain-aware KG-EDAS figure 1"
+            <img src="Figures/domain-edas-1.png" alt="Domain-aware KG-EDAS figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/domain-edas-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/domain-edas-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
@@ -280,9 +334,9 @@
         <p class="abstract">[ Paste the abstract for this paper here. ]</p>
         <div class="paper-figs">
           <figure class="fig">
-            <img src="figures/bert-kgc-1.png" alt="Contextualized BERT KGC figure 1"
+            <img src="Figures/bert-kgc-1.png" alt="Contextualized BERT KGC figure 1"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="fig-placeholder">Add image: figures/bert-kgc-1.png</div>
+            <div class="fig-placeholder">Add image: Figures/bert-kgc-1.png</div>
             <figcaption>Figure 1 — add your caption here.</figcaption>
           </figure>
         </div>
